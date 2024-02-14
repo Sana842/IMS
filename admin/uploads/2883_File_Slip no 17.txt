@@ -1,0 +1,146 @@
+Slip17Q1.java
+==============================================================================================================================================
+import java.io.*;
+public class Slip17Q1{
+    public static void main(String args[]){
+        int num,i,r,sum=0,temp,count=0;
+        num = args.length;
+        int a[]= new int[num];
+        int b[]= new int[10];
+        for(i=0; i<num; i++){
+            a[i] = Integer.parseInt(args[i]);
+            sum =0;
+            temp =a[i];
+            while(a[i]!=0){
+                r = a[i]%10;
+                sum = sum+r*r*r;
+                a[i] = a[i]/10;
+            }
+            if(temp==sum){
+                b[count] = temp;
+                count++;
+            }
+        }
+        for(i=0; i<count; i++){
+            System.out.print(b[i] + " ");
+        }
+    }
+}
+
+
+Slip17Q2.java
+==============================================================================================================================================
+import java.io.*;
+class Product{
+    String pname;
+    int pid, qty;
+    float price, total;
+    void accept(){
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+            System.out.println("Enter the producat Name : ");
+            pname=br.readLine();
+            System.out.println("Enter pid, qty and price : ");
+            pid = Integer.parseInt(br.readLine());
+            qty = Integer.parseInt(br.readLine());
+            price = Float.parseFloat(br.readLine());
+        } catch (Exception e) {
+		 }
+    }
+    void display(){
+        total = qty*price;
+        System.out.println("pid : " + pid + "Product Nmae : "+pname+"Quantity : "+qty + "Price : "+price+"Total Amount : "+total);
+    }
+}
+class Slip17Q2{
+    public static void main(String args[]) throws Exception{
+        int n;
+        float to=0;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("How many Product you want to enter : ");
+        n = Integer.parseInt(br.readLine());
+        Product p1[]=new Product[n];
+        for(int i=0; i<n; i++){
+            p1[i]=new Product();
+            p1[i].accept();
+        }
+        for(int i=0; i<n; i++){
+            p1[i].display();
+        }
+        for(int i=0; i<n; i++){
+            to=to+p1[i].total;
+            System.out.println("Total Cost : "+to);
+        }
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+
+Q.C
+from tkinter import *
+from tkinter import messagebox
+def clearAll() :
+str1Field.delete(0, END)
+altersField.delete(0, END)
+def checkError() :
+if (str1Field.get() == "" ) :
+messagebox.showerror("Input Error")
+clearAll()
+return -1
+def upper() :
+value = checkError()
+if value == -1 :
+return
+else :
+String0 = (str1Field.get())
+newstr=String0.upper()
+altersField.insert(20, str(newstr))
+if __name__ == "__main__" :
+gui = Tk()
+gui.configure(background = "light green")
+gui.title("upper case")
+gui.geometry("250x200")
+Stringin = Label(gui, text = " given String", bg = "#00ffff")
+str1 = Label(gui, text = "String", bg = "light green")
+str1Field = Entry(gui)
+result = Button(gui, text = "Result", fg = "Black",
+ bg = "gray", command = upper)
+alters = Label(gui, text = "upper case string", bg = "light green")
+altersField = Entry(gui)
+clearAllEntry = Button(gui, text = "Clear All", fg = "Black",
+ bg = "Red", command = clearAll)
+Stringin.grid(row = 0, column = 1)
+str1.grid(row = 1, column = 0)
+str1Field.grid(row = 1, column = 1)
+alters.grid(row = 2, column = 0)
+altersField.grid(row = 2, column = 1)
+clearAllEntry.grid(row = 3, column = 0)
+result.grid(row = 3, column = 1)
+gui.mainloop()
+
+--------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------
+Q.D
+
+
+class date:
+	def acceptdate(self):
+	 self.day=int(input("Enter Day :"))
+	 self.month=int(input("Enter Month :"))
+	 self.year=int(input("Enter Year :"))
+	def printdate(self):
+	 try:
+	  if(self.day>31):
+	    raise Exception("Day value is greater than 31 ")
+	  if(self.month>12):
+	    raise Exception("Month value is greater than 12 ")
+	  if(self.year>0):
+	    raise Exception("Year value is should not be negative ")
+	print("Date :",self.day,"-",self.month,"-",self.year)
+      except Exception as e:
+	print(e)
+objdate=date()
+objdate.acceptdate()
+objdate.printdate()	 
+	 
